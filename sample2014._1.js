@@ -1,4 +1,12 @@
 
+/**
+
+Sample of jquery work. This is preparing a file transfer package and responding to return results to initiate the transfers
+
+File has been modified to remove potentially sensitive client logic, including renaming objects and properties
+
+**/
+
 if (typeof AW !== 'object') { AW = {}; }
 
 $.support.cors = true;
@@ -14,8 +22,8 @@ var setup = function () {
     uploadButton.className = 'upload_button';
 	 
 	if (isWin) {
-		bnxFFT = new AW.Connect({
-			id:'bnx_fft_transfers',
+		someappFFT = new AW.Connect({
+			id:'someapp_fft_transfers',
 			containerId:'draganddrop',
 			dropMode:'callback',
 			height:'142',
@@ -29,7 +37,7 @@ var setup = function () {
 			$('a.upload_button').click( function(e) {
 				e.preventDefault();
 				e.stopPropagation();
-				bnxFFT.showSelectFileDialog({success:fileControls.buildPaths});
+				someappFFT.showSelectFileDialog({success:fileControls.buildPaths});
 			});
 			$('#button_container').click( function(e) {
 				e.preventDefault();
@@ -38,12 +46,12 @@ var setup = function () {
 			});
 	 	}
 	 	else {
-	 		uploadButton.setAttribute('onclick', 'bnxFFT.showSelectFileDialog({success:fileControls.buildPaths})');
+	 		uploadButton.setAttribute('onclick', 'someappFFT.showSelectFileDialog({success:fileControls.buildPaths})');
 	 	}
 	 }
 	 else {
-		bnxFFT = new AW.Connect({
-			id:'bnx_fft_transfers',
+		someappFFT = new AW.Connect({
+			id:'someapp_fft_transfers',
 			containerId:'draganddrop',
 			dropMode:'callback',
 			height:'161',
@@ -51,20 +59,20 @@ var setup = function () {
 			dropAllowDirectories: 'true',
 			dropAllowMultiple: 'true'
 		});
-		uploadButton.setAttribute('onclick', 'bnxFFT.showSelectFileDialog({success:fileControls.buildPaths})');
+		uploadButton.setAttribute('onclick', 'someappFFT.showSelectFileDialog({success:fileControls.buildPaths})');
 	 }
 	 
-	fileControls.setupDrop(bnxFFT);
+	fileControls.setupDrop(someappFFT);
  
     //var uploadButton = document.getElementById('drop-link');
     //uploadButton.className = 'upload_button';
-	//uploadButton.setAttribute('onclick', 'bnxFFT.showSelectFileDialog({success:fileControls.buildPaths})');
+	//uploadButton.setAttribute('onclick', 'someappFFT.showSelectFileDialog({success:fileControls.buildPaths})');
  
-   	bnxFFT.initSession();
-	bnxFFT.addEventListener('transfer', fileControls.handleTransferEvents, 1); 
+   	someappFFT.initSession();
+	someappFFT.addEventListener('transfer', fileControls.handleTransferEvents, 1); 
 };
 
-$('#bnx_fft_transfers').css('visibility','hidden');
+$('#someapp_fft_transfers').css('visibility','hidden');
 
 returnData = {};
 var fileConform = {"transferPaths":[]};
@@ -245,7 +253,7 @@ fileControls.uploadFiles = function (pathArray) {
 			$(this).addClass('disabled').html('<span> </span>');
 		});
 
-		response = bnxFFT.startTransfer(transferSpec, connectSettings);
+		response = someappFFT.startTransfer(transferSpec, connectSettings);
 		transferRequestId = response.request_id;
     	
 	});
@@ -307,18 +315,18 @@ fileControls.handleTransferEvents = function (event, obj) {
 
 fileControls.cancelTrans = function () {
     if(!(typeof transferId === 'undefined' || transferId == null)) {
-      var result = bnxFFT.removeTransfer(transferId);
+      var result = someappFFT.removeTransfer(transferId);
     }
 };
 
 fileControls.pauseTrans = function () {
     if(!(typeof transferId === 'undefined' || transferId == null)) {
-      var result = bnxFFT.stopTransfer(transferId);
+      var result = someappFFT.stopTransfer(transferId);
     }
 };
 
 fileControls.resumeTrans = function () {
     if(!(typeof transferId === 'undefined' || transferId === null)) {
-      var result = bnxFFT.resumeTransfer(transferId);
+      var result = someappFFT.resumeTransfer(transferId);
     }
 };

@@ -1,3 +1,11 @@
+/**
+
+Sample of angular work. This is building a grid to manage a type of notification
+
+File has been modified to remove potentially sensitive client logic, including renaming objects and properties
+
+**/
+
 (function (angular) {
     'use strict';
 
