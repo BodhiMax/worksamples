@@ -1,0 +1,477 @@
+/*
+
+sample of an SCSS (SASS) partial
+
+some selector names have been modified to hide original use
+
+*/
+
+$cold-climate: lighten($av-blue, 15%) !global;
+$warm-climate: lighten($av-orange, 15%) !global;
+
+// ---------------------------------- //
+// Master-grid base
+
+.master-container {
+
+    &__sub-view {
+        height: 100%;
+        position: relative;
+        width: 100%;
+
+        &--cat-merch {
+
+            .master-container__grid .grid {
+                height: calc(100% - 70px);
+            }
+        }
+    }
+
+    // ---------------------------------- //
+    // Master container elements
+
+    &__apply-button {
+        margin-left: 10px;
+        padding: 0 20px;
+    }
+
+    &__alert--counter {
+        color: $av-orange;
+        margin-left: 5px;
+        position: relative;
+        @extend %flex-container--left;
+
+        span {
+            @include icon(flag, before) {
+                font-size: 40px;
+                margin-left: -8px;
+                position: absolute;
+                top: -13px;
+            }
+
+            display: inline-block;
+        }
+
+        //@include icon(flag, after) {
+        //    font-size: 40px;
+        //    left: 5px;
+        //    position: absolute;
+        //    top: -13px;
+        //}
+    }
+
+    // ---------------------------------- //
+    // Master container control group (save button, actions menu etc.)
+
+    &__toolbar {
+        @extend %button__group;
+
+        .button {
+
+            &--add-container {
+                @include icon(add-page) {
+                    font-size: 20px;
+                    display: inline-block;
+                    margin: 5px;
+                }
+            }
+        }
+    }
+
+    &__content {
+    }
+
+    &__filter {
+        @include flex(0 0 auto);
+
+        + .master-container__filter {
+            margin-left: 10px;
+        }
+    }
+
+    // ---------------------------------- //
+    // Master Grid
+
+    &__element-container {
+        @include flex(1 0 auto);
+        @include justify-content(flex-end);
+
+        > .dropdown {
+            margin-right: 20px;
+        }
+    }
+
+    &__save-button {
+        margin-left: 10px;
+    }
+
+    &__dropdown {
+        width: 150px;
+    }
+
+    &__grid {
+        height: calc(100% - 50px);
+        left: 0;
+        position: absolute;
+        width: 100%;
+
+        .grid {
+            height: calc(100% - 70px);
+
+            &__container {
+
+                &--header {
+                    height: 70px;
+                }
+
+                &--body {
+                    height: calc(100% - 70px);
+                }
+            }
+
+            &__header {
+                top: 0;
+            }
+
+            &__body {
+
+                &.grid--pinned {
+                    height: 100%;
+                }
+            }
+        }
+
+
+        td:focus {
+            outline: none;
+        }
+
+        .grid-row {
+            background-color: $av-white !important;
+        }
+
+        .sort-arrows {
+            display: none;
+        }
+
+        // ---------------------------------- //
+        // Grid column overrides
+
+        .column {
+
+            &__sub-header {
+                background-color: $av-panel-gray;
+                box-shadow: rgba($av-mediumlight-gray, 1) -1px -1px 0 inset;
+                @extend %flex-container--centered;
+            }
+
+            &__sub-heading {
+                height: 30px;
+                @include flex(1 0 auto);
+
+                &:before {
+                    display: block;
+                    margin: auto;
+                    width: 30px;
+                }
+
+                &.master-container__sub-container {
+
+                    &--warm-climate {
+                        @include icon(warm-climate) {
+                            color: $warm-climate;
+                            font-size: 30px;
+                        }
+                    }
+
+                    &--cold-climate {
+                        @include icon(cold-climate) {
+                            color: $cold-climate;
+                            font-size: 30px;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .grid-column--sub-header {
+            background-color: $av-light-gray;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            @include display-inline-flex;
+            //@include flex-flow(row);
+
+            .column--sub-heading {
+                width: 100%;
+            }
+
+            .column--sub-heading--climate {
+
+                &-warm,
+                &-cold {
+                    font-size: 0;
+                    width: 50%;
+                }
+
+                &-warm {
+                    @include icon(warm-climate) {
+                        color: $av-orange;
+                        font-size: 25px;
+                        line-height: 30px;
+                        opacity: .8;
+                    }
+                }
+
+                &-cold {
+                    @include icon(cold-climate) {
+                        color: $av-blue;
+                        font-size: 25px;
+                        line-height: 30px;
+                        opacity: .8;
+                    }
+                }
+            }
+        }
+    }
+
+    &__grid--alerts {
+
+        .grid__container--header {
+            height: 80px;
+        }
+
+        .grid__container--body {
+            height: calc(100% - 80px);
+        }
+    }
+
+    // ---------------------------------- //
+    // Master Grid column
+
+    &__column {
+        box-shadow: rgba($av-mediumlight-gray, 1) -1px -1px 0 inset;
+        font-family: $trade-gothic20;
+        text-transform: uppercase;
+        height: 100px;
+        @include display-flex;
+        @include flex-flow(row wrap);
+
+        &--container-name,
+        &--subcontainer-name {
+            color: $av-dark-gray;
+            overflow: hidden;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        &--container-name {
+            font-size: $paragraph--medium;
+        }
+
+        .button--remove-container {
+            color: $av-medium-gray;
+            height: 40px;
+            line-height: 40px;
+            padding: 0;
+            position: absolute;
+            right: 0;
+            top: -40px;
+            @extend %transition--all;
+
+            &:hover {
+                color: $av-dark-gray;
+            }
+
+            @include icon(trash) {
+                font-size: 40px;
+            }
+
+            &--active {
+                top: 0;
+            }
+        }
+    }
+
+
+    &__label {
+
+        &--borrowed {
+            color: $av-gray;
+            display: block;
+            font-style: italic;
+            margin-top: 2px;
+            @extend %heading--xs;
+        }
+
+        &--container-name,
+        &--subcontainer-name {
+            font-weight: normal;
+            line-height: 40px;
+        }
+
+        &--container-name {
+            width: 100%;
+            word-break: break-all;
+        }
+
+        &--subcontainer-name {
+            word-break: break-all;
+        }
+
+    }
+
+    &__container {
+        font-weight: bold;
+        text-transform: uppercase;
+
+        &--borrowed {
+            background-color: $av-panel-gray;
+            //height: 100%;
+        }
+
+        &--repeated {
+            box-shadow: rgba($av-mediumlight-gray, 1) -1px 0 0 inset,
+            rgba($av-white, 1) 0 -1px 0;
+            color: $av-white;
+            font-size: 0;
+        }
+    }
+
+    &__subcontainer-name {
+        display: block;
+        width: 100%;
+    }
+
+    // ---------------------------------- //
+    // Sub-container container
+
+    &__sub-container-container {
+        box-shadow: rgba($av-mediumlight-gray, 1) -1px -1px 0 inset;
+        background-color: $av-white;
+        height: 100px;
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        @include display-flex;
+
+        // icon in the corner of the box
+    }
+
+    &__sub-container {
+        height: 100%;
+        position: relative;
+        width: 100px;
+        @include flex(0 0 auto);
+
+        &-heading {
+            cursor: pointer;
+            //font-family: $trade-gothic20;
+            @extend %heading--s;
+        }
+
+        &-link {
+            color: $av-medium-gray;
+            position: absolute;
+            z-index: 3;
+            @extend %transition--color;
+
+            &:hover {
+                color: $av-dark-gray;
+            }
+
+            @include icon(expand) {
+                font-size: 40px;
+                font-weight: normal;
+            }
+        }
+
+        &--warm-climate {
+            box-shadow: rgba($av-mediumlight-gray, 1) -1px -1px 0 inset;
+
+            .master-container__sub-container-link {
+                left: 0;
+            }
+
+            .priority-viewer__current-value {
+                //color: $av-orange;
+            }
+        }
+
+        &--cold-climate {
+
+            .priority-viewer__current-value {
+                //color: $av-blue;
+            }
+
+        }
+
+        &--mca {
+            background-size: 50px 50px !important;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            @include background-image(linear-gradient(45deg,
+                rgba($av-light-gray, 0.35) 25%, transparent 25%, transparent 50%,
+                rgba($av-light-gray, 0.35) 50%,
+                rgba($av-light-gray, 0.35) 75%, transparent 75%, transparent));
+        }
+
+        &--active {
+            height: 100%;
+            opacity: 1;
+            z-index: 1;
+
+            .flow__preview {
+                display: none;
+            }
+        }
+
+        &--has-offerings {
+
+            .flow__preview {
+                @include display-flex;
+            }
+        }
+    }
+
+    &__search-list {
+        height: calc(100% - 60px);
+        @extend %container--overflow-y;
+    }
+
+    &__list-item {
+        @extend %checkbox-list-item--large;
+    }
+
+    &__list-item-content {
+
+    }
+
+    &__list-item-heading {
+
+    }
+
+    &__list-item-timestamp {
+
+    }
+
+    &__links {
+
+    }
+
+    &__link {
+        @extend %transition--color;
+
+        &:hover {
+            color: $av-orange;
+        }
+    }
+}
+
+// ---------------------------------- //
+// Master-container search (Move this to it's own "search" stylesheet
+
+
+

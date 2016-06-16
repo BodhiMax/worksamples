@@ -1,0 +1,223 @@
+
+/*
+
+This originally .as file is for a flash simulation using ActionScript 2.0. The simulation was in the form of a game and was almost entirely ActionScript and XML (the latter to allow for internationalization). 
+
+*/
+
+MovieClip.prototype.getNewDepth = function () {
+	if (this.currentDepth == undefined) {
+		this.currentDepth = 1;
+	}
+	return this.currentDepth++;
+}
+
+function addUseCase () {
+	_global.usecasecurr++;
+}
+
+function remControl (whichRem) {
+	
+	switch (whichRem) {
+		case '1':
+			_root.step4.ch1.A1--; _root.step4.ch1.D1--; _root.step4.ch1.E1--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.A1, 0 , 1);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.D1, 3, 1);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.E1, 4, 1);
+			_root.step4.ch1.F2--; _root.step4.ch1.G2--; _root.step4.ch1.I2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.F2, 5 , 2);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.G2, 6, 2);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.I2, 8, 2);
+			
+			_root.step4.ch1.grid1ch.ucp1a_un._alpha = 100;
+			_root.step4.ch1.grid1ch.ucp1b_un._alpha = 100;
+			_root.step4.ch1.grid1ch.ucp1c_un._alpha = 100;
+			
+			_root.step4.ch1.grid2ch.uc1a_un._alpha = 100;
+			_root.step4.ch1.grid2ch.uc1b_un._alpha = 100;
+			_root.step4.ch1.grid2ch.uc1c_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP25.swapDepths(_root.getNewDepth());
+			_root.step4.ch1.gridPuzzle.pzP25.gotoAndPlay('fade');
+		
+			_global.riskArry[5] -= 1;
+			_global.riskArry[6] -= 1;
+			_global.riskArry[8] -= 1;
+		break;
+		case '2':
+			_root.step4.ch1.I2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.I2, 8, 2);
+			
+			_root.step4.ch1.grid2ch.uc2a_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP2.gotoAndPlay('fade');
+			_global.riskArry[8] -= 1;
+		break;
+		case '3':
+			_root.step4.ch1.I2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.I2, 8, 2);
+			_root.step4.ch1.grid2ch.uc3a_un._alpha = 100;
+			
+			_root.step4.ch1.gridPuzzle.pzP7.gotoAndPlay('fade');
+			_global.riskArry[8] -= 1;
+		break;
+		case '4':
+			_root.step4.ch1.gridPuzzle.pzP11.gotoAndPlay('fade');
+		break;
+		case '5':
+			_root.step4.ch1.F1--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.F1, 5 , 1);
+			_root.step4.ch1.H2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.H2, 7, 2);
+			_root.step4.ch1.grid1ch.ucp5a_un._alpha = 100;
+			_root.step4.ch1.grid2ch.uc5a_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP16.gotoAndPlay('fade');
+			_global.riskArry[7] -= 1;
+		break;
+		case '6':
+			_root.step4.ch1.B1--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.B1, 1 , 1);
+			_root.step4.ch1.B2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.B2, 1, 2);
+			_root.step4.ch1.grid1ch.ucp6a_un._alpha = 100;
+			_root.step4.ch1.grid2ch.uc6a_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP17.gotoAndPlay('fade');
+			_global.riskArry[1] -= 1;
+		break;
+		case '7':
+			_root.step4.ch1.gridPuzzle.pzP21.gotoAndPlay('fade');
+		break;
+		case '8':
+			_root.step4.ch1.gridPuzzle.pzP4.gotoAndPlay('fade');
+		break;
+		case '9':
+			_root.step4.ch1.B1--; _root.step4.ch1.C1--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.B1, 1 , 1);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.C1, 2 , 1);
+			_root.step4.ch1.B2--; _root.step4.ch1.D2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.B2, 1, 2);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.D2, 3, 2);
+			_root.step4.ch1.grid1ch.ucp9a_un._alpha = 100;
+			_root.step4.ch1.grid1ch.ucp9b_un._alpha = 100;
+			
+			_root.step4.ch1.grid2ch.uc9a_un._alpha = 100;
+			_root.step4.ch1.grid2ch.uc9b_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP8.gotoAndPlay('fade');
+			_global.riskArry[1] -= 1;
+			_global.riskArry[3] -= 1;
+		break;
+		case '10':
+			_root.step4.ch1.A1--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.A1, 0 , 1);
+			_root.step4.ch1.grid1ch.ucp10a_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP14.gotoAndPlay('fade');
+		break;
+		case '11':
+			_root.step4.ch1.gridPuzzle.pzP9.gotoAndPlay('fade');
+		break;
+		case '12':
+			_root.step4.ch1.A2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.A2, 0, 2);
+			_root.step4.ch1.grid2ch.uc12a_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP1.gotoAndPlay('fade');
+			_global.riskArry[0] -= 1;
+		break;
+		case '13':
+			_root.step4.ch1.C1--; _root.step4.ch1.G1--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.C1, 2 , 1);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.G1, 6 , 1);
+			_root.step4.ch1.D2--; _root.step4.ch1.J2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.D2, 3, 2);
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.J2, 9, 2);
+			_root.step4.ch1.grid1ch.ucp13a_un._alpha = 100;
+			_root.step4.ch1.grid1ch.ucp13b_un._alpha = 100;
+			
+			_root.step4.ch1.grid2ch.uc13a_un._alpha = 100;
+			_root.step4.ch1.grid2ch.uc13b_un._alpha = 100;
+			_root.step4.ch1.gridPuzzle.pzP5.gotoAndPlay('fade');
+			_global.riskArry[3] -= 0;
+			_global.riskArry[9] -= 0;
+		break;
+		case '14':
+			_root.step4.ch1.gridPuzzle.pzP23.gotoAndPlay('fade');
+		break;
+		case '15':
+			_root.step4.ch1.E2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.E2, 4 , 2);
+			_root.step4.ch1.grid2ch.uc15a_un._alpha = 100;
+			_global.riskArry[4] -= 1;
+			_root.step4.ch1.gridPuzzle.pzP15.gotoAndPlay('fade');
+		break;
+		case '16':
+			_root.step4.ch1.gridPuzzle.pzP20.gotoAndPlay('fade');
+		break;
+		case '17':
+			_root.step4.ch1.C2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.C2, 2 , 2);
+			_root.step4.ch1.grid2ch.uc17a_un._alpha = 100;
+			_global.riskArry[2] -= 1;
+			_root.step4.ch1.gridPuzzle.pzP13.gotoAndPlay('fade');
+		break;
+		case '18':
+			_root.step4.ch1.gridPuzzle.pzP24.gotoAndPlay('fade');
+		break;
+		case '19':
+			_root.step4.ch1.gridPuzzle.pzP3.gotoAndPlay('fade');
+		break;
+		case '20':
+			_root.step4.ch1.gridPuzzle.pzP19.gotoAndPlay('fade');
+		break;
+		case '21':
+			_root.step4.ch1.gridPuzzle.pzP22.gotoAndPlay('fade');
+		break;
+		case '22':
+			_root.step4.ch1.A2--;
+			_root.step4.ch1.riskDispCh(_root.step4.ch1.A2, 0 , 2);
+			
+			_root.step4.ch1.grid2ch.uc22a_un._alpha = 100;
+			_global.riskArry[0] -= 1;
+			_root.step4.ch1.gridPuzzle.pzP10.gotoAndPlay('fade');
+		break;
+		case '23':
+			_root.step4.ch1.gridPuzzle.pzP6.gotoAndPlay('fade');
+		break;
+		case '24':
+			_root.step4.ch1.gridPuzzle.pzP12.gotoAndPlay('fade');
+		break;
+		case '25':
+			_root.step4.ch1.gridPuzzle.pzP18.gotoAndPlay('fade');
+		break;
+	}
+	
+	_root.step4.ch1['ucCon' + whichRem].state = 0;
+	_root.step4.ch1.ucContainer['numUC' + whichRem].textColor = begColor;
+	subUseCase();
+	useCaseRem(('ucCon' + whichRem));
+	
+	riskTempHold = 0;
+	for (var rkHC = 0; rkHC < 10; rkHC++) {
+		if (_global.riskArry[rkHC] > 0) {
+			riskTempHold++;
+		}
+	}
+	
+	if (riskTempHold < 10) {
+		_global.riskMitigated = 0;
+	}
+
+}
+
+function returnRand (max, min) {
+	var randNum = Math.floor(Math.random() * ((max - min) + 1)) + min;
+	return randNum;
+}
+
+function subUseCase () {
+	_global.usecasecurr--;
+}
+
+function useCaseRem(whichUC) {
+	for (var ucC= 0; ucC < _global.usecasetrack.length; ucC++) {
+		if (_global.usecasetrack[ucC] == whichUC) {
+			_global.usecasetrack.splice(ucC, 1);
+		}
+	}
+}
